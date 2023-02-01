@@ -20,7 +20,7 @@ app.get('/api', (req, res) => {
       body: JSON.stringify({
         "query": req.query.q,
         "dataType": ["Branded"],
-        "pageNumber": req.query.pageNumber,
+        "pageNumber": req.query.p,
         "brandOwner": req.query.brand
       })
     });
@@ -28,6 +28,11 @@ app.get('/api', (req, res) => {
 
     res.send(content)
   })();
+})
+
+app.get('*', (req, res) => {
+  res.status(400)
+  res.send("Error");
 })
 
 app.listen(port, () => {
