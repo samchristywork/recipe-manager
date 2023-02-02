@@ -10,6 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+  <label for="query">Query:</label><br>
+  <input type="text" id="query" name="query" value="Strawberries"><br>
+  <label for="brand">Brand:</label><br>
+  <input type="text" id="brand" name="brand" value=""><br>
+  <button onclick="submitQuery()">Submit</button>
+  <div id="data"></div>
+  <pre id="debug"></pre>
 </body>
 
 <script src="./script.js"></script>
