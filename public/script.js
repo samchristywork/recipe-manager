@@ -1,3 +1,4 @@
+let foods=document.querySelector("#foods");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
@@ -11,6 +12,10 @@ function toTitleCase(str) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     }
   );
+}
+
+
+function addFood(id) {
 }
 
 function renderData(e) {
@@ -31,6 +36,7 @@ function renderData(e) {
     a+="</div>";
 
     a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+    a+=`<button onclick="addFood(${food.fdcId})">Add Food</button>`
     a+="</div>"
   }
 
@@ -46,6 +52,7 @@ function submitQuery() {
         hits:d.totalHits,
         foods:d.foods.map(e=>{
           return {
+            fdcId: e.fdcId,
             description: e.lowercaseDescription,
             brand: e.brandOwner,
             ingredients: e.ingredients,
@@ -59,7 +66,6 @@ function submitQuery() {
       debug=d;
       renderData(l);
     });
-  console.log(query.value);
 }
 
 query.addEventListener("keyup", (e)=>{
