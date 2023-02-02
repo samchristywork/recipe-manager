@@ -14,6 +14,28 @@ function toTitleCase(str) {
 }
 
 function renderData(e) {
+  let a=""
+  a+="<div class='hits'>Results: "+e.foods.length+" of "+e.hits+"</div>";
+
+  for (let food of e.foods) {
+    a+="<div class='item'>"
+    a+="<div class='description'>"+toTitleCase(food.description)+"</div>";
+    a+="<div class='servingSize'>"+food.servingSize+"</div>";
+    a+="<div class='brand'>"+food.brand+"</div>";
+    a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients:<div>"+food.ingredients+"</div></div>";
+
+    a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients:";
+    for (let nutrient of food.nutrients) {
+      a+="<div class='nutrient'>"+nutrient+"</div>";
+    }
+    a+="</div>";
+
+    a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data:<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+    a+="</div>"
+  }
+
+  data.innerHTML=a;
+  debug_view.innerHTML=JSON.stringify(e, null, 2);
 }
 
 function submitQuery() {
