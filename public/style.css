@@ -1,0 +1,61 @@
+:root {
+  --hits-color: #000;
+}
+
+.hits {
+  color: var(--hits-color);
+  text-align: center;
+  max-width: 50em;
+  margin: auto;
+}
+
+.item {
+  background-color: #eee;
+  border: 1px solid grey;
+  border-radius: 1em;
+  margin: 1em auto;
+  padding: 1em;
+  position: relative;
+  max-width: 50em;
+}
+
+.description {
+  color: #333;
+  font-weight: bold;
+  width: 50%;
+}
+
+.brand {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.servingSize {
+  position: absolute;
+  right: 1em;
+  top: 2em;
+}
+
+.ingredients {
+  padding: .3em;
+}
+
+.nutrient {
+  padding: .3em;
+}
+
+.raw_data {
+  padding: .3em;
+}
+
+.noshow {
+}
+
+.noshow div {
+  display: none;
+}
+
+.noshow:hover {
+  color: grey;
+}
