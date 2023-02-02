@@ -38,15 +38,25 @@
 }
 
 .ingredients {
-  padding: .3em;
 }
 
-.nutrient {
-  padding: .3em;
+.nutrients {
 }
 
 .raw_data {
-  padding: .3em;
+  overflow: scroll;
+}
+
+.ingredients div {
+  padding-left: 1em;
+}
+
+.nutrients div {
+  padding-left: 1em;
+}
+
+.raw_data div {
+  padding-left: 1em;
 }
 
 .noshow {
