@@ -4,6 +4,7 @@ let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
 let debug_view=document.querySelector("#debug");
 let debug={};
+let currentFoods=[];
 
 function toTitleCase(str) {
   return str.replace(
@@ -15,6 +16,30 @@ function toTitleCase(str) {
 }
 
 function renderFoods() {
+  foods.innerHTML="";
+
+  for (let idx in currentFoods) {
+    let food=currentFoods[idx];
+
+    let a="";
+    a+="<div class='item'>"
+    a+="<div class='description'>"+toTitleCase(food.description)+"</div>";
+    a+="<div class='servingSize'>"+food.servingSize+food.servingSizeUnit+"</div>";
+    a+="<div class='brand'>"+food.brandOwner+"</div>";
+    a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients<div><div>"+food.ingredients+"</div></div></div>";
+
+    a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients";
+    for (let nutrient of food.foodNutrients) {
+      a+="<div><pre>"+JSON.stringify(nutrient, null, 2)+"</pre></div>";
+    }
+    a+="</div>";
+
+    a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+    a+=`<button onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
+    a+="</div>"
+
+    foods.innerHTML+=a;
+  }
 }
 
 function addFood(id) {
