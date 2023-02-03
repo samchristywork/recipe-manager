@@ -35,7 +35,7 @@ function renderFoods() {
     a+="</div>";
 
     a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
-    a+=`<button onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
+    a+=`<button class="remove-button" onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
     a+="</div>"
 
     foods.innerHTML+=a;
@@ -71,7 +71,7 @@ function renderData(e) {
     a+="</div>";
 
     a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
-    a+=`<button onclick="addFood(${food.fdcId})">Add Food</button>`
+    a+=`<button class="add-button" onclick="addFood(${food.fdcId})">Add Food</button>`
     a+="</div>"
   }
 

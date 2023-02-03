@@ -69,3 +69,15 @@
 .noshow:hover {
   color: grey;
 }
+
+.add-button {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
+
+.remove-button {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}
