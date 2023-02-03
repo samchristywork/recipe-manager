@@ -14,8 +14,16 @@ function toTitleCase(str) {
   );
 }
 
+function renderFoods() {
+}
 
 function addFood(id) {
+  fetch(`/api?id=${id}`)
+    .then((response) => response.json())
+    .then((food) => {
+      currentFoods.push(food);
+      renderFoods();
+    });
 }
 
 function renderData(e) {
