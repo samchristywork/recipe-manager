@@ -43,6 +43,8 @@ function renderFoods() {
 }
 
 function addFood(id) {
+  foods.innerHTML+="<div>Loading, please wait...</div>";
+
   fetch(`/api?id=${id}`)
     .then((response) => response.json())
     .then((food) => {
