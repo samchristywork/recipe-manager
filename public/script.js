@@ -16,6 +16,10 @@ function toTitleCase(str) {
   );
 }
 
+function setServings(idx) {
+  currentFoods[idx].foodNutrients.serving_size=2.0;
+}
+
 function renderFoods() {
   foods.innerHTML="";
 
@@ -32,6 +36,11 @@ function renderFoods() {
     a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients<div><div>"+food.ingredients+"</div></div></div>";
 
     a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients";
+
+    if (!food.foodNutrients.serving_size) {
+      console.log(1);
+      food.foodNutrients.serving_size = 1.0;
+    }
     nutrients.push(food.foodNutrients);
 
     for (let nutrient of food.foodNutrients) {
@@ -40,6 +49,7 @@ function renderFoods() {
     a+="</div>";
 
     a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+    a+=`<button class="serving-button" onclick="setServings(${idx}); renderFoods()">Servings</button>`
     a+=`<button class="remove-button" onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
     a+="</div>"
 
@@ -47,14 +57,17 @@ function renderFoods() {
   }
 
   total_nutrients.innerHTML="";
+  let sum=0;
   for (let food of nutrients) {
     for (let nutrient of food) {
-      console.log(nutrient.nutrient.name);
       if (nutrient.nutrient.name=="Energy") {
-        total_nutrients.innerHTML+=nutrient.amount+nutrient.nutrient.unitName;
+        let amt=nutrient.amount*food.serving_size;
+        total_nutrients.innerHTML+=amt+" Calories<br>";
+        sum+=amt;
       }
     }
   };
+  total_nutrients.innerHTML+=sum+" Calories Total";
 }
 
 function addFood(id) {
