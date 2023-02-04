@@ -49,8 +49,10 @@ function renderFoods() {
     a+="</div>";
 
     a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+    a+="<div class=\"config-buttons\">"
     a+=`<button class="serving-button" onclick="setServings(${idx}); renderFoods()">Servings</button>`
     a+=`<button class="remove-button" onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
+    a+="</div>"
     a+="</div>"
 
     foods.innerHTML+=a;
