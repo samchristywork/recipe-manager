@@ -18,6 +18,8 @@ function toTitleCase(str) {
 function renderFoods() {
   foods.innerHTML="";
 
+  let nutrients=[];
+
   for (let idx in currentFoods) {
     let food=currentFoods[idx];
 
@@ -29,6 +31,8 @@ function renderFoods() {
     a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients<div><div>"+food.ingredients+"</div></div></div>";
 
     a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients";
+    nutrients.push(food.foodNutrients);
+
     for (let nutrient of food.foodNutrients) {
       a+="<div><pre>"+JSON.stringify(nutrient, null, 2)+"</pre></div>";
     }
@@ -40,6 +44,16 @@ function renderFoods() {
 
     foods.innerHTML+=a;
   }
+
+  total_nutrients.innerHTML="";
+  for (let food of nutrients) {
+    for (let nutrient of food) {
+      console.log(nutrient.nutrient.name);
+      if (nutrient.nutrient.name=="Energy") {
+        total_nutrients.innerHTML+=nutrient.amount+nutrient.nutrient.unitName;
+      }
+    }
+  };
 }
 
 function addFood(id) {
