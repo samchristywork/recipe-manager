@@ -12,7 +12,6 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
   if (req.query.id!=null) {
     (async () => {
-      console.log(1);
       const rawResponse = await fetch(`https://api.nal.usda.gov/fdc/v1/food/${req.query.id}?api_key=${process.env.API_KEY}`, {
         method: 'GET',
         headers: {
@@ -26,7 +25,6 @@ app.get('/api', (req, res) => {
     })();
   } else {
     (async () => {
-      console.log(2);
       const rawResponse = await fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${process.env.API_KEY}`, {
         method: 'POST',
         headers: {
