@@ -1,4 +1,5 @@
 let foods=document.querySelector("#foods");
+let total_nutrients=document.querySelector("#total_nutrients");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
