@@ -3,8 +3,6 @@ let total_nutrients=document.querySelector("#total_nutrients");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
-let debug_view=document.querySelector("#debug");
-let debug={};
 let currentFoods=[];
 
 function toTitleCase(str) {
@@ -111,7 +109,6 @@ function renderData(e) {
   }
 
   data.innerHTML=a;
-  debug_view.innerHTML=JSON.stringify(e, null, 2);
 }
 
 function submitQuery() {
@@ -133,7 +130,6 @@ function submitQuery() {
           }
         })
       }
-      debug=d;
       renderData(l);
     });
 }
