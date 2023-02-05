@@ -17,7 +17,11 @@ function toTitleCase(str) {
 }
 
 function setServings(idx) {
-  currentFoods[idx].foodNutrients.serving_size=2.0;
+  let size=Number.parseFloat(prompt("Enter the amount of servings."));
+
+  if (!Number.isNaN(size)) {
+    currentFoods[idx].foodNutrients.serving_size=size;
+  }
 }
 
 function renderFoods() {
