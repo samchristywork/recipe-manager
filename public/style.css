@@ -37,6 +37,12 @@
   top: 2em;
 }
 
+.servings {
+  position: absolute;
+  right: 1em;
+  top: 3em;
+}
+
 .ingredients {
 }
 

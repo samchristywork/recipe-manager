@@ -28,19 +28,20 @@ function renderFoods() {
   for (let idx in currentFoods) {
     let food=currentFoods[idx];
 
+    if (!food.foodNutrients.serving_size) {
+      food.foodNutrients.serving_size = 1.0;
+    }
+
     let a="";
     a+="<div class='item'>"
     a+="<div class='description'>"+toTitleCase(food.description)+"</div>";
     a+="<div class='servingSize'>"+food.servingSize+food.servingSizeUnit+"</div>";
+    a+="<div class='servings'>"+food.foodNutrients.serving_size+" serving(s)</div>";
     a+="<div class='brand'>"+food.brandOwner+"</div>";
     a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients<div><div>"+food.ingredients+"</div></div></div>";
 
     a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients";
 
-    if (!food.foodNutrients.serving_size) {
-      console.log(1);
-      food.foodNutrients.serving_size = 1.0;
-    }
     nutrients.push(food.foodNutrients);
 
     for (let nutrient of food.foodNutrients) {
