@@ -6,6 +6,25 @@ let data=document.querySelector("#data");
 let download_button=document.querySelector("#download_button");
 let currentFoods=[];
 
+function importFoods(input) {
+  let file = input.files[0];
+
+  let reader = new FileReader();
+  reader.readAsText(file);
+
+  reader.onload = function() {
+    console.log(JSON.parse(reader.result));
+    console.log(currentFoods);
+
+    currentFoods=JSON.parse(reader.result);
+    renderFoods();
+  };
+
+  reader.onerror = function() {
+    alert("File import failed.");
+  };
+}
+
 function toTitleCase(str) {
   return str.replace(
     /\w\S*/g,
@@ -74,10 +93,6 @@ function renderFoods() {
     }
   };
   total_nutrients.innerHTML+=sum+" Calories Total";
-
-  var file = new Blob([JSON.stringify(currentFoods, null, 2)], {type: "text/json"});
-  download_button.href = URL.createObjectURL(file);
-  download_button.download = "food_export.json";
 }
 
 function addFood(id) {
@@ -88,6 +103,10 @@ function addFood(id) {
     .then((food) => {
       currentFoods.push(food);
       renderFoods();
+
+      var file = new Blob([JSON.stringify(currentFoods, null, 2)], {type: "text/json"});
+      download_button.href = URL.createObjectURL(file);
+      download_button.download = "food_export.json";
     });
 }
 
