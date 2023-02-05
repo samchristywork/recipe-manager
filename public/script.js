@@ -3,6 +3,7 @@ let total_nutrients=document.querySelector("#total_nutrients");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
+let download_button=document.querySelector("#download_button");
 let currentFoods=[];
 
 function toTitleCase(str) {
@@ -73,6 +74,10 @@ function renderFoods() {
     }
   };
   total_nutrients.innerHTML+=sum+" Calories Total";
+
+  var file = new Blob([JSON.stringify(currentFoods, null, 2)], {type: "text/json"});
+  download_button.href = URL.createObjectURL(file);
+  download_button.download = "food_export.json";
 }
 
 function addFood(id) {
