@@ -109,7 +109,18 @@ function renderFoods() {
     }
   }
 
-  total_nutrients.innerHTML="<pre>"+JSON.stringify(totals, null, 2)+"</pre>";
+  let a="";
+  a+="<div class='nutrition-information'>";
+  for (let key in totals) {
+    a+=`<span>${key}</span>`;
+    a+=`<span>${totals[key].value}`;
+    a+="</span>";
+
+    a+=`<span>${totals[key].percent}</span>`;
+  }
+  a+="</div>";
+
+  total_nutrients.innerHTML=a;
 }
 
 function addFood(id) {
