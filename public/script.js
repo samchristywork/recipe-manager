@@ -117,9 +117,16 @@ function renderFoods() {
   for (let key in totals) {
     a+=`<span>${key}</span>`;
     a+=`<span>${(Math.round(totals[key].value * 100) / 100).toFixed(2)}`;
+    if (totals[key].unit) {
+      a+=` ${totals[key].unit}`;
+    }
     a+="</span>";
 
-    a+=`<span>${(Math.round(totals[key].percent * 10000) / 100).toFixed(2)}%</span>`;
+    if (totals[key].percent) {
+      a+=`<span>${(Math.round(totals[key].percent * 10000) / 100).toFixed(2)}%</span>`;
+    } else {
+      a+="<span></span>";
+    }
   }
   a+="</div>";
 
