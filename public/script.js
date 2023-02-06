@@ -116,10 +116,10 @@ function renderFoods() {
   a+="<span><b>% Daily Value</b></span>";
   for (let key in totals) {
     a+=`<span>${key}</span>`;
-    a+=`<span>${totals[key].value}`;
+    a+=`<span>${(Math.round(totals[key].value * 100) / 100).toFixed(2)}`;
     a+="</span>";
 
-    a+=`<span>${totals[key].percent}</span>`;
+    a+=`<span>${(Math.round(totals[key].percent * 10000) / 100).toFixed(2)}%</span>`;
   }
   a+="</div>";
 
