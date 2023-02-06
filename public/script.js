@@ -6,6 +6,18 @@ let data=document.querySelector("#data");
 let download_button=document.querySelector("#download_button");
 let currentFoods=[];
 
+let rdvs={
+  "Calcium, Ca": 1166,
+  "Carbohydrate, by difference": 300,
+  "Energy": 2000,
+  "Fatty acids, total saturated": 18.75,
+  "Fiber, total dietary": 28,
+  "Iron, Fe": 18,
+  "Protein": 71,
+  "Sodium, Na": 2318,
+  "Total lipid (fat)": 75
+}
+
 function importFoods(input) {
   let file = input.files[0];
 
