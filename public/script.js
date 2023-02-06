@@ -97,10 +97,15 @@ function renderFoods() {
   for (let food of nutrients) {
     for (let nutrient of food) {
       if (!totals[nutrient.nutrient.name]) {
-        totals[nutrient.nutrient.name]=0;
+        totals[nutrient.nutrient.name]={"value": 0};
       }
 
-      totals[nutrient.nutrient.name]+=nutrient.amount*food.serving_size;
+      totals[nutrient.nutrient.name].value+=nutrient.amount*food.serving_size;
+      totals[nutrient.nutrient.name].unit=nutrient.nutrient.unitName;
+      if (rdvs[nutrient.nutrient.name]) {
+        totals[nutrient.nutrient.name].recommended=rdvs[nutrient.nutrient.name];
+        totals[nutrient.nutrient.name].percent=totals[nutrient.nutrient.name].value/totals[nutrient.nutrient.name].recommended;
+      }
     }
   }
 
