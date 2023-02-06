@@ -81,18 +81,18 @@ function renderFoods() {
     foods.innerHTML+=a;
   }
 
-  total_nutrients.innerHTML="";
-  let sum=0;
+  let totals={};
   for (let food of nutrients) {
     for (let nutrient of food) {
-      if (nutrient.nutrient.name=="Energy") {
-        let amt=nutrient.amount*food.serving_size;
-        total_nutrients.innerHTML+=amt+" Calories<br>";
-        sum+=amt;
+      if (!totals[nutrient.nutrient.name]) {
+        totals[nutrient.nutrient.name]=0;
       }
+
+      totals[nutrient.nutrient.name]+=nutrient.amount*food.serving_size;
     }
-  };
-  total_nutrients.innerHTML+=sum+" Calories Total";
+  }
+
+  total_nutrients.innerHTML="<pre>"+JSON.stringify(totals, null, 2)+"</pre>";
 }
 
 function addFood(id) {
