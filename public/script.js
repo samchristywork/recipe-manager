@@ -111,6 +111,9 @@ function renderFoods() {
 
   let a="";
   a+="<div class='nutrition-information'>";
+  a+="<span><b>Nutrient</b></span>";
+  a+="<span><b>Total Amount</b></span>";
+  a+="<span><b>% Daily Value</b></span>";
   for (let key in totals) {
     a+=`<span>${key}</span>`;
     a+=`<span>${totals[key].value}`;
