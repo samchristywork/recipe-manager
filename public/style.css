@@ -96,5 +96,15 @@
 
 .nutrition-information {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
+  max-width: 30em;
+}
+
+.header {
+  border-bottom: 1px solid black;
+}
+
+.row {
+  border-bottom: 1px solid #ccc;
+  line-height: 1.3em;
 }

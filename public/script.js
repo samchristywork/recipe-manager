@@ -111,21 +111,21 @@ function renderFoods() {
 
   let a="";
   a+="<div class='nutrition-information'>";
-  a+="<span><b>Nutrient</b></span>";
-  a+="<span><b>Total Amount</b></span>";
-  a+="<span><b>% Daily Value</b></span>";
+  a+="<span class='header'><b>Nutrient</b></span>";
+  a+="<span class='header'><b>Total Amount</b></span>";
+  a+="<span class='header'><b>% Daily Value</b></span>";
   for (let key in totals) {
-    a+=`<span>${key}</span>`;
-    a+=`<span>${(Math.round(totals[key].value * 100) / 100).toFixed(2)}`;
+    a+=`<span class='row'>${key}</span>`;
+    a+=`<span class='row'>${(Math.round(totals[key].value * 100) / 100).toFixed(2)}`;
     if (totals[key].unit) {
       a+=` ${totals[key].unit}`;
     }
     a+="</span>";
 
     if (totals[key].percent) {
-      a+=`<span>${(Math.round(totals[key].percent * 10000) / 100).toFixed(2)}%</span>`;
+      a+=`<span class='row'>${(Math.round(totals[key].percent * 10000) / 100).toFixed(2)}%</span>`;
     } else {
-      a+="<span></span>";
+      a+="<span class='row'></span>";
     }
   }
   a+="</div>";
