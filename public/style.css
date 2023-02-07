@@ -94,10 +94,22 @@
   bottom: 1em;
 }
 
+.nutrition-information-container {
+  top: 5em;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+}
+
 .nutrition-information {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
+  margin: 0em auto;
   max-width: 30em;
+  background-color: white;
+  padding: 2em;
+  border-radius: 1em;
+  border: 1px solid grey;
 }
 
 .header {

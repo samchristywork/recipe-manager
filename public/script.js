@@ -110,6 +110,7 @@ function renderFoods() {
   }
 
   let a="";
+  a+="<div class='nutrition-information-container'>";
   a+="<div class='nutrition-information'>";
   a+="<span class='header'><b>Nutrient</b></span>";
   a+="<span class='header'><b>Total Amount</b></span>";
@@ -128,6 +129,7 @@ function renderFoods() {
       a+="<span class='row'></span>";
     }
   }
+  a+="</div>";
   a+="</div>";
 
   total_nutrients.innerHTML=a;
