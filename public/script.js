@@ -18,6 +18,11 @@ let rdvs={
   "Total lipid (fat)": 75
 }
 
+function show_nutrition_information() {
+  let e=document.querySelector("#nutrition-information");
+  e.classList.toggle("hidden");
+}
+
 function importFoods(input) {
   let file = input.files[0];
 

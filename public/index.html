@@ -10,10 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <input type="file" onchange="importFoods(this)">
   <div id="foods"></div>
   <div id="total_nutrients"></div>
-  <a id="download_button"><button>Export</button></a><br>
+  <button onclick='show_nutrition_information()'>Show Nutrition Information</button><br>
+  <span>Import File:</span>
+  <input type="file" onchange="importFoods(this)"></input><br>
+  <span>Export File:</span>
+  <a id="download_button"><button>Download...</button></a><span> Foo</span><br>
   <label for="query">Query:</label><br>
   <input type="text" id="query" name="query" value="Strawberries"><br>
   <label for="brand">Brand:</label><br>
