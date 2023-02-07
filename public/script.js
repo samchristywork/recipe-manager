@@ -110,7 +110,7 @@ function renderFoods() {
   }
 
   let a="";
-  a+="<div class='nutrition-information-container'>";
+  a+="<div id='nutrition-information' class='nutrition-information-container hidden' onclick='this.classList.toggle(\"hidden\")'>";
   a+="<div class='nutrition-information'>";
   a+="<span class='header'><b>Nutrient</b></span>";
   a+="<span class='header'><b>Total Amount</b></span>";

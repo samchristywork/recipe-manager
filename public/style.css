@@ -120,3 +120,7 @@
   border-bottom: 1px solid #ccc;
   line-height: 1.3em;
 }
+
+.hidden {
+  display: none;
+}
