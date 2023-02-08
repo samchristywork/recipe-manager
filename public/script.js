@@ -5,6 +5,7 @@ let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
 let download_button=document.querySelector("#download_button");
 let currentFoods=[];
+let loading=0;
 
 let rdvs={
   "Calcium, Ca": 1166,
@@ -138,15 +139,24 @@ function renderFoods() {
   a+="</div>";
 
   total_nutrients.innerHTML=a;
+
+  if (loading>0) {
+    foods.innerHTML+="<div><b>Loading, please wait...</b></div>";
+  }
 }
 
 function addFood(id) {
-  foods.innerHTML+="<div>Loading, please wait...</div>";
+  document.documentElement.scrollTo({"top":0,"behavior":"smooth"});
+
+  loading+=1;
+
+  renderFoods();
 
   fetch(`/api?id=${id}`)
     .then((response) => response.json())
     .then((food) => {
       currentFoods.push(food);
+      loading-=1;
       renderFoods();
 
       var file = new Blob([JSON.stringify(currentFoods, null, 2)], {type: "text/json"});
@@ -181,6 +191,8 @@ function renderData(e) {
 }
 
 function submitQuery() {
+  data.innerHTML+="<div><b>Loading, please wait...</b></div>";
+
   fetch(`/api?q="${query.value}"&p=1&brand=${brand.value}`)
     .then((response) => response.json())
     .then((d) => {
