@@ -19,6 +19,9 @@ app.get('/api', (req, res) => {
       },
     })
       .then(e=>{
+        if (e.status==404) {
+          return;
+        }
         return e.json()
       })
       .then(e=>{
@@ -39,6 +42,9 @@ app.get('/api', (req, res) => {
       })
     })
       .then(e=>{
+        if (e.status==404) {
+          return;
+        }
         return e.json()
       })
       .then(e=>{
