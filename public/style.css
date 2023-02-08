@@ -124,3 +124,30 @@
 .hidden {
   display: none;
 }
+
+.import-export-container {
+  display: grid;
+  grid-template-columns: 22em 3em;
+  transition: .3s;
+  border-radius: 1em;
+  border: 1px solid black;
+  background-color: #eee;
+  position: absolute;
+  top: 1em;
+  left: 0em;
+  padding: .25em;
+}
+
+.tucked-away {
+  transform: translate(-24em);
+}
+
+.import-export-switch {
+  background-color: grey;
+  border-radius: 1em;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 5em 1fr 5em;
+}
