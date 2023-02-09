@@ -38,6 +38,7 @@ app.get('/api', (req, res) => {
         "query": req.query.q,
         "dataType": ["Branded"],
         "pageNumber": req.query.p,
+        "pageSize": 25,
         "brandOwner": req.query.brand
       })
     })
