@@ -147,6 +147,7 @@
   border-radius: 1em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border: 1px solid #888;
 }
 
 .layout {
@@ -156,8 +157,6 @@
 
 .vertical-line {
   border-left: 1px solid #aaa;
-  width: 3px;
   height: 80%;
-  top: 1em;
   transform: translate(0em, 10%);
 }
