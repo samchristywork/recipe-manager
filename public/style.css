@@ -2,6 +2,10 @@
   --hits-color: #000;
 }
 
+body {
+  margin-top: 2em;
+}
+
 .hits {
   color: var(--hits-color);
   text-align: center;
@@ -175,4 +179,11 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 1em;
   }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  color: #444;
 }
