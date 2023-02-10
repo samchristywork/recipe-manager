@@ -164,6 +164,8 @@
 .query-container {
   display: grid;
   grid-template-columns: 5em 1fr 5em;
+  max-width: 30em;
+  margin: auto;
 }
 
 @media screen and (min-width: 60em) {
