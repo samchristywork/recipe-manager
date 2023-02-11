@@ -135,7 +135,7 @@ body {
   grid-template-columns: 22em 3em;
   transition: .3s;
   border-radius: 1em;
-  border: 1px solid black;
+  border: 1px solid grey;
   background-color: #eee;
   position: absolute;
   top: 1em;
@@ -186,4 +186,11 @@ body {
   font-size: 1.5em;
   font-family: sans-serif;
   color: #444;
+}
+
+.fdc-id-label {
+  position: absolute;
+  right: 4em;
+  bottom: .5em;
+  font-size: .5em;
 }

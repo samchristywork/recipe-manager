@@ -94,6 +94,7 @@ function renderFoods() {
     a+=`<button class="serving-button" onclick="setServings(${idx}); renderFoods()">Servings</button>`
     a+=`<button class="remove-button" onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
     a+="</div>"
+    a+=`<div class="fdc-id-label">${food.fdcId}</div>`
     a+="</div>"
 
     foods.innerHTML+=a;
