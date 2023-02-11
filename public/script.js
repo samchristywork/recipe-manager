@@ -21,6 +21,11 @@ let rdvs={
   "Total lipid (fat)": 75
 }
 
+function clear_selection() {
+  currentFoods=[];
+  renderFoods();
+}
+
 function show_nutrition_information() {
   let e=document.querySelector("#nutrition-information");
   e.classList.toggle("hidden");
