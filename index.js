@@ -22,7 +22,7 @@ app.get('/api', (req, res) => {
         if (e.status==404) {
           return;
         }
-        return e.json()
+        return e.text()
       })
       .then(e=>{
         res.send(e);
@@ -46,7 +46,7 @@ app.get('/api', (req, res) => {
         if (e.status==404) {
           return;
         }
-        return e.json()
+        return e.text();
       })
       .then(e=>{
         res.send(e);
