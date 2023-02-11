@@ -8,9 +8,6 @@ body {
 
 .hits {
   color: var(--hits-color);
-  text-align: center;
-  max-width: 50em;
-  margin: auto;
 }
 
 .item {

@@ -3,7 +3,9 @@ let total_nutrients=document.querySelector("#total_nutrients");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
 let data=document.querySelector("#data");
+let results_box=document.querySelector("#results-box");
 let download_button=document.querySelector("#download_button");
+let number_box=document.querySelector("#number-box");
 let currentFoods=[];
 let loading=0;
 
@@ -168,7 +170,7 @@ function addFood(id) {
 
 function renderData(e) {
   let a=""
-  a+="<div class='hits'>Results: "+e.foods.length+" of "+e.hits+"</div>";
+  results_box.innerHTML="<span class='hits'>Results: "+e.foods.length+" of "+e.hits+"</span>";
 
   for (let food of e.foods) {
     a+="<div class='item'>"
@@ -194,7 +196,14 @@ function renderData(e) {
 function submitQuery() {
   data.innerHTML+="<div><b>Loading, please wait...</b></div>";
 
-  fetch(`/api?q="${query.value}"&p=1&brand=${brand.value}`)
+  let pageNumber=number_box.value;
+  if (!pageNumber) {
+    pageNumber=1;
+  }
+
+  number_box.value=pageNumber;
+
+  fetch(`/api?q="${query.value}"&p=${pageNumber}&brand=${brand.value}`)
     .then((response) => response.json())
     .then((d) => {
       let l={
