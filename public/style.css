@@ -191,3 +191,11 @@ body {
   bottom: .5em;
   font-size: .5em;
 }
+
+.results-box-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 30em;
+  text-align: center;
+  margin: auto;
+}
