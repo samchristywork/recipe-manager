@@ -125,6 +125,9 @@ function renderFoods() {
     a+="</div>"
 
     foods.innerHTML+=a;
+
+    let savedFoods=currentFoods.map(e=>{return e.fdcId});
+    document.cookie=`savedFoods=${JSON.stringify(savedFoods)};`;
   }
 
   let totals={};
@@ -269,3 +272,7 @@ brand.addEventListener("keyup", (e)=>{
     submitQuery();
   }
 });
+
+for (let id of JSON.parse(getCookie("savedFoods"))) {
+  addFood(id);
+}
