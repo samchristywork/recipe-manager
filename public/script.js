@@ -38,8 +38,6 @@ function importFoods(input) {
   reader.readAsText(file);
 
   reader.onload = function() {
-    console.log(JSON.parse(reader.result));
-    console.log(currentFoods);
 
     currentFoods=JSON.parse(reader.result);
     renderFoods();

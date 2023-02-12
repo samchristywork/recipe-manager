@@ -36,7 +36,7 @@ app.get('/api', (req, res) => {
       },
       body: JSON.stringify({
         "query": req.query.q,
-        "dataType": ["Branded"],
+        "dataType": ["Branded", "Foundation"],
         "pageNumber": req.query.p,
         "pageSize": 25,
         "brandOwner": req.query.brand
