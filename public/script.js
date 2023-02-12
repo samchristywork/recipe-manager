@@ -127,7 +127,15 @@ function renderFoods() {
   a+="<span class='header'><b>Nutrient</b></span>";
   a+="<span class='header'><b>Total Amount</b></span>";
   a+="<span class='header'><b>% Daily Value</b></span>";
+
+  let keys=[];
   for (let key in totals) {
+    keys.push(key);
+  }
+
+  keys.sort();
+
+  for (let key of keys) {
     a+=`<span class='row'>${key}</span>`;
     a+=`<span class='row'>${(Math.round(totals[key].value * 100) / 100).toFixed(2)}`;
     if (totals[key].unit) {
