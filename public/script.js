@@ -217,19 +217,17 @@ function renderData(e) {
   results_box.innerHTML="<span class='hits'>Results: "+e.foods.length+" of "+e.hits+"</span>";
 
   for (let food of e.foods) {
-    a+="<div class='item'>"
-    a+="<div class='description'>"+toTitleCase(food.description)+"</div>";
-    a+="<div class='servingSize'>"+food.servingSize+"</div>";
-    a+="<div class='brand'>"+food.brand+"</div>";
-    a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients<div><div>"+food.ingredients+"</div></div></div>";
 
-    a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients";
-    for (let nutrient of food.nutrients) {
-      a+="<div>"+nutrient+"</div>";
+    if (!food.foodNutrients) {
+      food.foodNutrients=[];
     }
-    a+="</div>";
 
-    a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+    if (!food.foodNutrients.serving_size) {
+      food.foodNutrients.serving_size = 1.0;
+    }
+
+    a+="<div class='item'>"
+    a+=renderFoodItem(food);
     a+=`<button class="add-button" onclick="addFood(${food.fdcId})">Add Food</button>`
     a+="</div>"
   }
