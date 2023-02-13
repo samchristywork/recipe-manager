@@ -24,6 +24,31 @@ app.get('/list', (req, res) => {
     });
   })
 
+app.get('/search', (req, res) => {
+  fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${process.env.API_KEY}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "query": req.query.q,
+      "dataType": ["Branded", "Foundation"],
+      "pageNumber": req.query.p,
+      "pageSize": 25,
+      "brandOwner": req.query.brand
+    })
+  })
+    .then(e=>{
+      if (e.status==404) {
+        return;
+      }
+      return e.text();
+    })
+    .then(e=>{
+      res.send(e);
+    });
+  })
 
 app.get('/api', (req, res) => {
   if (req.query.id!=null) {
