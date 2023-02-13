@@ -31,13 +31,19 @@
           <div style="text-align: right;">
             <div><label for="query" style="line-height: 1.6em;">Query:</label></div>
             <div><label for="brand" style="line-height: 1.6em;">Brand:</label></div>
+            <div><label for="type" style="line-height: 1.6em;">Type:</label></div>
           </div>
           <div>
             <input style="width: 97%;" type="text" id="query" name="query" value="Strawberries">
             <input style="width: 97%;" type="text" id="brand" name="brand" value="">
+            <select style="width: 99%;" id="type" name="type">
+              <option value="branded">Branded</option>
+              <option value="foundation">Foundation</option>
+              <option value="both">Both</option>
+            </select>
           </div>
           <div>
-            <button onclick="submitQuery()" style="height: 3.5em;">Submit</button>
+            <button onclick="submitQuery()" style="height: 5.3em;">Submit</button>
           </div>
         </div>
         <div class="results-box-container">
