@@ -36,6 +36,30 @@ function getCookie(cname) {
   return "";
 }
 
+function renderFoodItem(food) {
+  let a="";
+  a+="<div class='description'>"+toTitleCase(food.description)+"</div>";
+
+  if (food.dataType=="Branded") {
+    a+="<div class='servingSize'>"+food.servingSize+food.servingSizeUnit+"</div>";
+    a+="<div class='brand'>"+food.brandOwner+"</div>";
+  }
+  a+="<div class='servings'>"+food.foodNutrients.serving_size+" serving(s)</div>";
+  a+="<div class='ingredients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Ingredients<div><div>"+food.ingredients+"</div></div></div>";
+
+  a+="<div class='nutrients noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Nutrients";
+
+  for (let nutrient of food.foodNutrients) {
+    a+="<div><pre>"+JSON.stringify(nutrient, null, 2)+"</pre></div>";
+  }
+  a+="</div>";
+
+  a+="<div class='raw_data noshow' onclick='this.classList.toggle(\"noshow\")'><span style='color:green'>+</span> Raw Data<div><pre>"+JSON.stringify(food, null, 2)+"</pre></div></div>";
+  a+=`<div class="fdc-id-label">${food.fdcId}</div>`
+
+  return a;
+}
+
 function clear_selection() {
   currentFoods=[];
   renderFoods();
