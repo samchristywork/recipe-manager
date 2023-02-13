@@ -5,9 +5,25 @@ const port = 3000
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-  res.send("Hello, World!");
-})
+app.get('/list', (req, res) => {
+  fetch(`https://api.nal.usda.gov/fdc/v1/food/${req.query.id}?api_key=${process.env.API_KEY}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  })
+    .then(e=>{
+      if (e.status==404) {
+        return;
+      }
+      return e.text()
+    })
+    .then(e=>{
+      res.send(e);
+    });
+  })
+
 
 app.get('/api', (req, res) => {
   if (req.query.id!=null) {
