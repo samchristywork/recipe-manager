@@ -2,6 +2,7 @@ let foods=document.querySelector("#foods");
 let total_nutrients=document.querySelector("#total_nutrients");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
+let type=document.querySelector("#type");
 let data=document.querySelector("#data");
 let results_box=document.querySelector("#results-box");
 let download_button=document.querySelector("#download_button");
@@ -245,7 +246,7 @@ function submitQuery() {
 
   number_box.value=pageNumber;
 
-  fetch(`/search?q="${query.value}"&p=${pageNumber}&brand=${brand.value}`)
+  fetch(`/search?q="${query.value}"&p=${pageNumber}&brand=${brand.value}&type=${type.value}`)
     .then((response) => response.json())
     .then((d) => {
       let l={

@@ -25,6 +25,17 @@ app.get('/list', (req, res) => {
   })
 
 app.get('/search', (req, res) => {
+  let datatype=[];
+
+  if (req.query.type=='branded') {
+    datatype.push("Branded");
+  } else if (req.query.type=='foundation') {
+    datatype.push("Foundation");
+  } else {
+    datatype.push("Branded");
+    datatype.push("Foundation");
+  }
+
   fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${process.env.API_KEY}`, {
     method: 'POST',
     headers: {
@@ -33,7 +44,7 @@ app.get('/search', (req, res) => {
     },
     body: JSON.stringify({
       "query": req.query.q,
-      "dataType": ["Branded", "Foundation"],
+      "dataType": datatype,
       "pageNumber": req.query.p,
       "pageSize": 25,
       "brandOwner": req.query.brand
