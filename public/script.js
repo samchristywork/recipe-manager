@@ -63,6 +63,7 @@ function renderFoodItem(food) {
 
 function clear_selection() {
   currentFoods=[];
+  document.cookie=`savedFoods=[];`;
   renderFoods();
 }
 
@@ -78,7 +79,6 @@ function importFoods(input) {
   reader.readAsText(file);
 
   reader.onload = function() {
-
     currentFoods=JSON.parse(reader.result);
     renderFoods();
   };
