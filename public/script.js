@@ -199,7 +199,7 @@ function addFood(id) {
 
   renderFoods();
 
-  fetch(`/api?id=${id}`)
+  fetch(`/list?id=${id}`)
     .then((response) => response.json())
     .then((food) => {
       currentFoods.push(food);
@@ -245,7 +245,7 @@ function submitQuery() {
 
   number_box.value=pageNumber;
 
-  fetch(`/api?q="${query.value}"&p=${pageNumber}&brand=${brand.value}`)
+  fetch(`/search?q="${query.value}"&p=${pageNumber}&brand=${brand.value}`)
     .then((response) => response.json())
     .then((d) => {
       let l={
