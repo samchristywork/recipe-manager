@@ -106,6 +106,10 @@ function setServings(idx) {
 }
 
 function renderFoods() {
+  currentFoods=currentFoods.filter(e=>{
+    return e.status!=400
+  });
+
   foods.innerHTML="";
 
   let nutrients=[];
