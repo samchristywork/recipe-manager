@@ -2,6 +2,11 @@
 
 ## Overview
 
+## Screenshots
+
+<div><img alt="Main page" style="" src="./res/main.png"></div>
+<div><img alt="Nutrition information" style="" src="./res/nutrition.png"></div>
+
 ## Features
 
 ## Usage
