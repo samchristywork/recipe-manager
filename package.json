@@ -1,7 +1,7 @@
 {
   "name": "recipe-manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "An application to calculate nutritional information for recipes.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/samchristywork/recipe-manager.git"
   },
-  "author": "",
+  "author": "Sam Christy",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/samchristywork/recipe-manager/issues"
