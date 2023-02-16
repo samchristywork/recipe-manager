@@ -2,6 +2,10 @@
 
 ## Overview
 
+This is an application that helps users plan meals and nutrient consumption by
+taking advantage of the USDA's data provided through the USDA Global Branded
+Food Products Database and other data sources.
+
 ## Screenshots
 
 <div><img alt="Main page" style="" src="./res/main.png"></div>
@@ -21,6 +25,10 @@ href="https://fdc.nal.usda.gov/">the FoodData Cental Website</a>.
 API_KEY="YOUR_KEY"
 PORT=3000
 ```
+
+Run the server with `npm start`.
+
+Alternatively, use `nodemon index.js` for ease of development.
 
 ## License
 
