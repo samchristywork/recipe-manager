@@ -7,7 +7,7 @@ let data=document.querySelector("#data");
 let results_box=document.querySelector("#results-box");
 let download_button=document.querySelector("#download_button");
 let number_box=document.querySelector("#number-box");
-let currentFoods=[];
+let currentRecipe=[];
 let loading=0;
 
 let rdvs={
@@ -62,9 +62,9 @@ function renderFoodItem(food) {
 }
 
 function clear_selection() {
-  currentFoods=[];
-  document.cookie=`savedFoods=[];`;
-  renderFoods();
+  currentRecipe=[];
+  document.cookie=`savedRecipe=[];`;
+  renderRecipe();
 }
 
 function show_nutrition_information() {
@@ -79,8 +79,8 @@ function importRecipes(input) {
   reader.readAsText(file);
 
   reader.onload = function() {
-    currentFoods=JSON.parse(reader.result);
-    renderFoods();
+    currentRecipe=JSON.parse(reader.result);
+    renderRecipe();
   };
 
   reader.onerror = function() {
@@ -101,12 +101,12 @@ function setServings(idx) {
   let size=Number.parseFloat(prompt("Enter the amount of servings."));
 
   if (!Number.isNaN(size)) {
-    currentFoods[idx].foodNutrients.serving_size=size;
+    currentRecipe[idx].foodNutrients.serving_size=size;
   }
 }
 
-function renderFoods() {
-  currentFoods=currentFoods.filter(e=>{
+function renderRecipe() {
+  currentRecipe=currentRecipe.filter(e=>{
     return e.status!=400
   });
 
@@ -114,8 +114,8 @@ function renderFoods() {
 
   let nutrients=[];
 
-  for (let idx in currentFoods) {
-    let food=currentFoods[idx];
+  for (let idx in currentRecipe) {
+    let food=currentRecipe[idx];
 
     if (!food.foodNutrients) {
       food.foodNutrients=[];
@@ -131,16 +131,16 @@ function renderFoods() {
     a+=renderFoodItem(food);
 
     a+="<div class=\"config-buttons\">"
-    a+=`<button class="serving-button" onclick="setServings(${idx}); renderFoods()">Servings</button>`
-    a+=`<button class="remove-button" onclick="currentFoods.splice(${idx}, 1); renderFoods()">Remove</button>`
+    a+=`<button class="serving-button" onclick="setServings(${idx}); renderRecipe()">Servings</button>`
+    a+=`<button class="remove-button" onclick="currentRecipe.splice(${idx}, 1); renderRecipe()">Remove</button>`
     a+="</div>"
 
     a+="</div>"
 
     recipe.innerHTML+=a;
 
-    let savedFoods=currentFoods.map(e=>{return e.fdcId});
-    document.cookie=`savedFoods=${JSON.stringify(savedFoods)};`;
+    let savedRecipe=currentRecipe.map(e=>{return e.fdcId});
+    document.cookie=`savedRecipe=${JSON.stringify(savedRecipe)};`;
   }
 
   let totals={};
@@ -202,16 +202,16 @@ function addFood(id) {
 
   loading+=1;
 
-  renderFoods();
+  renderRecipe();
 
   fetch(`/list?id=${id}`)
     .then((response) => response.json())
     .then((food) => {
-      currentFoods.push(food);
+      currentRecipe.push(food);
       loading-=1;
-      renderFoods();
+      renderRecipe();
 
-      var file = new Blob([JSON.stringify(currentFoods, null, 2)], {type: "text/json"});
+      var file = new Blob([JSON.stringify(currentRecipe, null, 2)], {type: "text/json"});
       download_button.href = URL.createObjectURL(file);
       download_button.download = "food_export.json";
     });
