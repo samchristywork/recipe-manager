@@ -255,7 +255,7 @@ function submitQuery() {
     .then((d) => {
       let l={
         hits:d.totalHits,
-        recipe:d.recipe.map(e=>{
+        recipe:d.foods.map(e=>{
           return {
             fdcId: e.fdcId,
             description: e.lowercaseDescription,
@@ -284,6 +284,10 @@ brand.addEventListener("keyup", (e)=>{
   }
 });
 
-for (let id of JSON.parse(getCookie("savedFoods"))) {
+if (getCookie("savedRecipe")=="") {
+  document.cookie="savedRecipe=[]";
+}
+
+for (let id of JSON.parse(getCookie("savedRecipe"))) {
   addFood(id);
 }
