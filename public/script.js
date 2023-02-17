@@ -1,4 +1,4 @@
-let foods=document.querySelector("#foods");
+let recipe=document.querySelector("#recipe");
 let total_nutrients=document.querySelector("#total_nutrients");
 let query=document.querySelector("#query");
 let brand=document.querySelector("#brand");
@@ -72,7 +72,7 @@ function show_nutrition_information() {
   e.classList.toggle("hidden");
 }
 
-function importFoods(input) {
+function importRecipes(input) {
   let file = input.files[0];
 
   let reader = new FileReader();
@@ -110,7 +110,7 @@ function renderFoods() {
     return e.status!=400
   });
 
-  foods.innerHTML="";
+  recipe.innerHTML="";
 
   let nutrients=[];
 
@@ -137,7 +137,7 @@ function renderFoods() {
 
     a+="</div>"
 
-    foods.innerHTML+=a;
+    recipe.innerHTML+=a;
 
     let savedFoods=currentFoods.map(e=>{return e.fdcId});
     document.cookie=`savedFoods=${JSON.stringify(savedFoods)};`;
@@ -193,7 +193,7 @@ function renderFoods() {
   total_nutrients.innerHTML=a;
 
   if (loading>0) {
-    foods.innerHTML+="<div><b>Loading, please wait...</b></div>";
+    recipe.innerHTML+="<div><b>Loading, please wait...</b></div>";
   }
 }
 
@@ -219,9 +219,9 @@ function addFood(id) {
 
 function renderData(e) {
   let a=""
-  results_box.innerHTML="<span class='hits'>Results: "+e.foods.length+" of "+e.hits+"</span>";
+  results_box.innerHTML="<span class='hits'>Results: "+e.recipe.length+" of "+e.hits+"</span>";
 
-  for (let food of e.foods) {
+  for (let food of e.recipe) {
 
     if (!food.foodNutrients) {
       food.foodNutrients=[];
@@ -255,7 +255,7 @@ function submitQuery() {
     .then((d) => {
       let l={
         hits:d.totalHits,
-        foods:d.foods.map(e=>{
+        recipe:d.recipe.map(e=>{
           return {
             fdcId: e.fdcId,
             description: e.lowercaseDescription,

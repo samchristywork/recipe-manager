@@ -21,7 +21,7 @@
         <div style="text-align: center;">
           <button onclick="clear_selection()">Clear Selection</button><br>
         </div>
-        <div id="foods"></div>
+        <div id="recipe"></div>
         <div id="total_nutrients"></div>
         <br>
       </div>
@@ -58,7 +58,7 @@
       <div class="import-export-container tucked-away">
         <div style="padding: 1em;">
           <span>Import File:</span>
-          <input type="file" onchange="importFoods(this)"></input><br>
+          <input type="file" onchange="importRecipes(this)"></input><br>
           <span>Export File:</span>
           <a id="download_button"><button>Download...</button></a><span> food_export.json</span><br>
         </div>
