@@ -284,6 +284,10 @@ brand.addEventListener("keyup", (e)=>{
   }
 });
 
+number_box.addEventListener("change", (e)=>{
+  submitQuery();
+});
+
 if (getCookie("savedRecipe")=="") {
   document.cookie="savedRecipe=[]";
 }
