@@ -221,11 +221,11 @@ function addFood(id) {
     });
 }
 
-function renderData(e) {
+function renderSearchResults(e) {
   let a=""
-  results_box.innerHTML="<span class='hits'>Results: "+e.recipe.length+" of "+e.hits+"</span>";
+  results_box.innerHTML="<span class='hits'>Results: "+e.results.length+" of "+e.hits+"</span>";
 
-  for (let food of e.recipe) {
+  for (let food of e.results) {
 
     if (!food.foodNutrients) {
       food.foodNutrients=[];
@@ -257,22 +257,7 @@ function submitQuery() {
   fetch(`/search?q="${query.value}"&p=${pageNumber}&brand=${brand.value}&type=${type.value}`)
     .then((response) => response.json())
     .then((d) => {
-      let l={
-        hits:d.totalHits,
-        recipe:d.foods.map(e=>{
-          return {
-            fdcId: e.fdcId,
-            description: e.lowercaseDescription,
-            brand: e.brandOwner,
-            ingredients: e.ingredients,
-            servingSize: e.servingSize+e.servingSizeUnit,
-            nutrients: e.foodNutrients.map(e=>{
-              return e.nutrientName+": "+e.value+e.unitName
-            })
-          }
-        })
-      }
-      renderData(l);
+      renderSearchResults(d);
     });
 }
 
