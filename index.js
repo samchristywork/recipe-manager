@@ -1,9 +1,22 @@
 require('dotenv').config()
+const session = require('express-session')
 const express = require('express')
 const app = express()
 const port = process.env.PORT
 
 app.use(express.static('public'))
+
+var sess = {
+  secret: "some secret",
+  cookie: {}
+}
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1);
+  sess.cookie.secure = true;
+}
+
+app.use(session(sess))
 
 app.get('/list', (req, res) => {
   fetch(`https://api.nal.usda.gov/fdc/v1/food/${req.query.id}?api_key=${process.env.API_KEY}`, {
