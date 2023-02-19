@@ -7,7 +7,7 @@ const port = process.env.PORT
 app.use(express.static('public'))
 
 var sess = {
-  secret: "some secret",
+  secret: process.env.SECRET,
   cookie: {}
 }
 
