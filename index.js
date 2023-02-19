@@ -52,12 +52,20 @@ app.get('/search', (req, res) => {
   })
     .then(e=>{
       if (e.status==404) {
-        return;
+        return {};
       }
-      return e.text();
+      return e.json();
     })
     .then(e=>{
-      res.send(e);
+      if (e) {
+        res.send({
+          "totalHits": e.totalHits,
+          "totalPages": e.totalPages,
+          "results": e.foods
+        });
+      } else {
+        res.send({});
+      }
     });
   })
 
