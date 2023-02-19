@@ -19,6 +19,7 @@
   "homepage": "https://github.com/samchristywork/recipe-manager#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "express-session": "^1.17.3",
     "express.js": "^1.0.0"
   }
 }
