@@ -38,6 +38,10 @@ function getCookie(cname) {
 }
 
 function renderFoodItem(food) {
+  if (!food.description) {
+    return;
+  }
+
   let a="";
   a+="<div class='description'>"+toTitleCase(food.description)+"</div>";
 
