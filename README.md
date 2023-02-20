@@ -24,6 +24,7 @@ href="https://fdc.nal.usda.gov/">the FoodData Cental Website</a>.
 ```
 API_KEY="YOUR_KEY"
 PORT=3000
+SECRET="YOUR_SECRET"
 ```
 
 Run the server with `npm start`.
