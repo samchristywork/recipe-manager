@@ -140,6 +140,19 @@ body {
   padding: .25em;
 }
 
+.ingredient-filter-container {
+  display: grid;
+  grid-template-columns: 22em 3em;
+  transition: .3s;
+  border-radius: 1em;
+  border: 1px solid grey;
+  background-color: #eee;
+  position: absolute;
+  top: 8em;
+  left: 0em;
+  padding: .25em;
+}
+
 .tucked-away {
   transform: translate(-24em);
 }
@@ -198,4 +211,8 @@ body {
   max-width: 30em;
   text-align: center;
   margin: auto;
+}
+
+.forbidden-item {
+  background-color: #eaa;
 }
