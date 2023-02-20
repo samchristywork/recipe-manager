@@ -7,6 +7,7 @@ let data=document.querySelector("#data");
 let results_box=document.querySelector("#results-box");
 let download_button=document.querySelector("#download_button");
 let number_box=document.querySelector("#number-box");
+let forbidden_ingredients=document.querySelector("#forbidden-ingredients");
 let currentRecipe=[];
 let loading=0;
 
@@ -109,6 +110,21 @@ function setServings(idx) {
   }
 }
 
+function hasForbiddenIngredient(food) {
+  for (let line of forbidden_ingredients.value.split("\n")) {
+    if (line=="") {
+      continue;
+    }
+
+    const re = new RegExp(line, "g");
+
+    if (re.exec(food.ingredients)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function renderRecipe() {
   currentRecipe=currentRecipe.filter(e=>{
     return e.status!=400
@@ -131,7 +147,14 @@ function renderRecipe() {
 
     nutrients.push(food.foodNutrients);
 
-    let a="<div class='item'>"
+    let a="";
+
+    if (hasForbiddenIngredient(food)) {
+      a+="<div class='item forbidden-item'>"
+    } else {
+      a+="<div class='item'>"
+    }
+
     a+=renderFoodItem(food);
 
     a+="<div class=\"config-buttons\">"
