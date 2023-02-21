@@ -296,6 +296,10 @@ brand.addEventListener("keyup", (e)=>{
   }
 });
 
+forbidden_ingredients.addEventListener("keyup", (e)=>{
+  renderRecipe();
+});
+
 number_box.addEventListener("change", (e)=>{
   submitQuery();
 });
