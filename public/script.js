@@ -85,7 +85,7 @@ function importRecipes(input) {
   reader.readAsText(file);
 
   reader.onload = function() {
-    currentRecipe=JSON.parse(reader.result);
+    currentRecipe=JSON.parse(reader.result).recipe;
     renderRecipe();
   };
 
@@ -239,7 +239,10 @@ function addFood(id) {
       loading-=1;
       renderRecipe();
 
-      var file = new Blob([JSON.stringify(currentRecipe, null, 2)], {type: "text/json"});
+      var file = new Blob([JSON.stringify({
+        "recipe": currentRecipe,
+        "version": "1.0.0"
+      }, null, 2)], {type: "text/json"});
       download_button.href = URL.createObjectURL(file);
       download_button.download = "food_export.json";
     });
