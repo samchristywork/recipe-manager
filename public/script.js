@@ -73,6 +73,7 @@ function clear_selection() {
 }
 
 function show_nutrition_information() {
+  renderRecipe();
   let e=document.querySelector("#nutrition-information");
   e.classList.toggle("hidden");
 }
