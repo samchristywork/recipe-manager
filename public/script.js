@@ -116,7 +116,7 @@ function hasForbiddenIngredient(food) {
       continue;
     }
 
-    const re = new RegExp(line, "g");
+    const re = new RegExp(line, "gi");
 
     if (re.exec(food.ingredients)) {
       return true;
