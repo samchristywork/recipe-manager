@@ -8,8 +8,10 @@ Food Products Database and other data sources.
 
 ## Screenshots
 
-<div><img alt="Main page" style="" src="./res/main.png"></div>
-<div><img alt="Nutrition information" style="" src="./res/nutrition.png"></div>
+<div>
+<img alt="Main page" width=400 style="" src="./res/main.png">
+<img alt="Nutrition information" width=400 style="" src="./res/nutrition.png">
+</div>
 
 ## Features
 - Search for foods in the USDA Global Branded Food Products Database
