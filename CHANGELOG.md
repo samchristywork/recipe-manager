@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.0] - 2023-xx-xx
+## [1.0.0] - 2023-02-21
 
 ### Added
 - Search for foods in the USDA Global Branded Food Products Database
